@@ -10,6 +10,15 @@
           "style": "scss"
         }
       },
+      "i18n": {
+        "sourceLocale": "en-US",
+        "locales": {
+          "fr": {
+            "translation": "src/locale/messages.fr.xlf",
+            "baseHref": "/fr/"
+          }
+        }
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -20,6 +29,8 @@
             "outputPath": "dist/angular-localize",
             "index": "src/index.html",
             "main": "src/main.ts",
+            "localize": true,
+            "i18nMissingTranslation": "error",
             "polyfills": [
               "zone.js"
             ],
@@ -57,6 +68,9 @@
               "extractLicenses": false,
               "sourceMap": true,
               "namedChunks": true
+            },
+            "fr": {
+              "localize": ["fr"]
             }
           },
           "defaultConfiguration": "production"
@@ -69,6 +83,9 @@
             },
             "development": {
               "browserTarget": "angular-localize:build:development"
+            },
+            "fr": {
+              "browserTarget": "angular-localize:build:development,fr"
             }
           },
           "defaultConfiguration": "development"
@@ -76,7 +93,9 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "angular-localize:build"
+            "browserTarget": "angular-localize:build",
+            "format": "xlf",
+            "outputPath": "src/locale"
           }
         },
         "test": {
